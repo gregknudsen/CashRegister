@@ -24,10 +24,17 @@ export class ChangeParser {
         summary += ""
       } else if (this.result[index].value === 1) {
           summary += `${this.result[index].value} ${this.result[index].name} `
-        } else summary += `${this.result[index].value} ${this.result[index].name}s `        
+        } else summary += `${this.result[index].value} ${this.parsePenny(this.result[index].name)} `        
       })
     return summary;
   }
+
+  parsePenny(str: string): string {
+    if (str === "penny") {
+      return "pennies";
+    } else return `${str}s`
+  }
+
 
   summary(): void {
     console.log("FINAL RESULT PARSED", this.parsedChange)
