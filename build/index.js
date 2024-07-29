@@ -1,15 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const ChangeParser_1 = require("./ChangeParser");
 const CsvFileReader_1 = require("./CsvFileReader");
 const csvReader = new CsvFileReader_1.CsvFileReader("sample.csv");
 csvReader.read();
 // let results = csvReader.read()
 csvReader.data.forEach((el) => {
-    let amountOwed = Number(Number(el[0]).toFixed(2));
-    let amountGiven = Number(Number(el[1]).toFixed(2));
-    let difference = Number(Number(amountGiven - amountOwed)).toFixed(2);
-    console.log(`amountOwed: ${amountOwed}, Amount given: ${amountGiven}`);
-    console.log("difference", Number(difference));
+    let amountOwed = Number(el[0]);
+    let amountGiven = Number(el[1]);
+    const changeParser = new ChangeParser_1.ChangeParser(amountOwed, amountGiven);
+    //  console.log(changeParser.difference);
+    changeParser.makeChange();
+    changeParser.summary();
 });
 /*
 REQUIREMENTS

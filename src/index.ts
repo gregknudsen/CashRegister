@@ -1,17 +1,20 @@
+import { ChangeParser } from "./ChangeParser";
 import { CsvFileReader } from "./CsvFileReader";
+
 
 const csvReader = new CsvFileReader("sample.csv")
 csvReader.read();
 
 // let results = csvReader.read()
 csvReader.data.forEach((el: string[]) => {
-   let amountOwed = Number(Number(el[0]).toFixed(2));
-   let amountGiven = Number(Number(el[1]).toFixed(2));
-   let difference = Number(Number(amountGiven - amountOwed)).toFixed(2)
-   console.log(`amountOwed: ${amountOwed}, Amount given: ${amountGiven}`);
-   console.log("difference", Number(difference));
-   
-})
+  let amountOwed = Number(el[0]);
+  let amountGiven = Number(el[1]);
+
+  const changeParser = new ChangeParser(amountOwed, amountGiven);
+  //  console.log(changeParser.difference);
+  changeParser.makeChange();
+  changeParser.summary();
+});
 
 
 /*

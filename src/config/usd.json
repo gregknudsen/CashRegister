@@ -1,0 +1,24 @@
+{
+  "USD": [
+    {
+      "name": "dollar",
+      "value": 100
+    },
+    {
+      "name": "quarter",
+      "value": 25
+    },
+    {
+      "name": "dime",
+      "value": 10
+    },
+    {
+      "name": "nickel",
+      "value": 5
+    },
+    {
+      "name": "penny",
+      "value": 1
+    }
+  ]
+}
