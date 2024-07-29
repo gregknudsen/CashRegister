@@ -12,7 +12,7 @@ csvReader.data.forEach((el: string[]) => {
 
   const changeParser = new ChangeParser(amountOwed, amountGiven);
   //  console.log(changeParser.difference);
-  changeParser.makeChange();
+  changeParser.provideChange();
   changeParser.summary();
 });
 
