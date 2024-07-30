@@ -1,3 +1,4 @@
+import figlet from "figlet";
 import { ChangeParser } from "./ChangeParser";
 import { CsvFileReader } from "./CsvFileReader";
 
@@ -5,16 +6,41 @@ import { CsvFileReader } from "./CsvFileReader";
 const csvReader = new CsvFileReader("sample.csv")
 csvReader.read();
 
-// let results = csvReader.read()
-csvReader.data.forEach((el: string[]) => {
-  let amountOwed = Number(el[0]);
-  let amountGiven = Number(el[1]);
+const init = () => {
+  intro();
+  
+}
 
-  const changeParser = new ChangeParser(amountOwed, amountGiven);
-  //  console.log(changeParser.difference);
-  changeParser.provideChange();
-  changeParser.summary();
-});
+
+const intro = () => {
+
+  console.log("Welcome to....")
+  
+  setTimeout(() => {    
+    figlet("Change Parser!", (err, data) => {
+      if (err) {
+        console.log("Sorry, something went wrong");
+        console.dir(err);
+        return;
+      }
+      console.log(data);
+    });
+  }, 2000)
+}
+
+init();
+
+
+// let results = csvReader.read()
+// csvReader.data.forEach((el: string[]) => {
+//   let amountOwed = Number(el[0]);
+//   let amountGiven = Number(el[1]);
+
+//   const changeParser = new ChangeParser(amountOwed, amountGiven);
+//   //  console.log(changeParser.difference);
+//   changeParser.provideChange();
+//   changeParser.summary();
+// });
 
 
 /*

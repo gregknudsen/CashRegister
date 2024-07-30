@@ -1,18 +1,38 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const ChangeParser_1 = require("./ChangeParser");
+const figlet_1 = __importDefault(require("figlet"));
 const CsvFileReader_1 = require("./CsvFileReader");
 const csvReader = new CsvFileReader_1.CsvFileReader("sample.csv");
 csvReader.read();
+const init = () => {
+    intro();
+};
+const intro = () => {
+    console.log("Welcome to....");
+    setTimeout(() => {
+        (0, figlet_1.default)("Change Parser!", (err, data) => {
+            if (err) {
+                console.log("Sorry, something went wrong");
+                console.dir(err);
+                return;
+            }
+            console.log(data);
+        });
+    }, 2000);
+};
+init();
 // let results = csvReader.read()
-csvReader.data.forEach((el) => {
-    let amountOwed = Number(el[0]);
-    let amountGiven = Number(el[1]);
-    const changeParser = new ChangeParser_1.ChangeParser(amountOwed, amountGiven);
-    //  console.log(changeParser.difference);
-    changeParser.provideChange();
-    changeParser.summary();
-});
+// csvReader.data.forEach((el: string[]) => {
+//   let amountOwed = Number(el[0]);
+//   let amountGiven = Number(el[1]);
+//   const changeParser = new ChangeParser(amountOwed, amountGiven);
+//   //  console.log(changeParser.difference);
+//   changeParser.provideChange();
+//   changeParser.summary();
+// });
 /*
 REQUIREMENTS
 
