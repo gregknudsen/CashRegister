@@ -35,14 +35,13 @@ export class ChangeParser {
     } else return `${str}s`
   }
 
-
   summary(): void {
     console.log("FINAL RESULT PARSED", this.parsedChange)
   }
 
-  provideChange(): void {
-    
+  provideChange(): void {    
     if ((this.owed * 100) % 3 === 0) {
+      // shuffle USD array to create random change values
       let shuffled = usd.USD
         .map(value => ({ value, sort: Math.random() }))
         .sort((a, b) => a.sort - b.sort)
@@ -51,7 +50,6 @@ export class ChangeParser {
         this.makeChange(shuffled)
 
       } else this.makeChange(usd.USD);
-
   }
   makeChange(array: Change[]): void {
     let changeInCents: number = Number(Number(this.difference).toFixed(2)) * 100;
