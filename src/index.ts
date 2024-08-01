@@ -4,12 +4,9 @@ import chalk from 'chalk';
 import { ChangeParser } from "./ChangeParser";
 import { CsvFileReader } from "./CsvFileReader";
 
-
-
-
-
-
+// Starts app
 const init = (): void => {
+  console.clear();
   intro();
 }
 
@@ -33,12 +30,13 @@ const dialog = ():void => {
     input: process.stdin,
     output: process.stdout
   });
-  
-  rl.question("Assuming you have a .csv file ready, are you ready to make change? [Y, n] ", answer => {
+
+  rl.question("Assuming you have a .csv file ready, are you ready to make change? [Y, n] \n", answer => {
     if (answer.toLocaleLowerCase() === "y") {
       console.log("LET'S MAKE CHANGE!");
       console.log(chalk.blue("-----------------------------------"));
       parseData();
+      console.log(chalk.yellow("Thanks for playing!\n"))
     } else {
       console.log(chalk.red("See you next time!"))
     }
@@ -49,12 +47,10 @@ const dialog = ():void => {
 }
 
 
-init();
-
 const parseData = (): void => {
   const csvReader = new CsvFileReader("sample.csv")
   csvReader.read();
-
+  
   csvReader.data.forEach((el: string[]) => {
     let amountOwed = Number(el[0]);
     let amountGiven = Number(el[1]);
@@ -66,6 +62,7 @@ const parseData = (): void => {
   });
 }
 
+init();
 
 /*
 REQUIREMENTS

@@ -31,7 +31,9 @@ const figlet_1 = __importDefault(require("figlet"));
 const chalk_1 = __importDefault(require("chalk"));
 const ChangeParser_1 = require("./ChangeParser");
 const CsvFileReader_1 = require("./CsvFileReader");
+// Starts app
 const init = () => {
+    console.clear();
     intro();
 };
 const intro = () => {
@@ -53,11 +55,12 @@ const dialog = () => {
         input: process.stdin,
         output: process.stdout
     });
-    rl.question("Assuming you have a .csv file ready, are you ready to make change? [Y, n] ", answer => {
+    rl.question("Assuming you have a .csv file ready, are you ready to make change? [Y, n] \n", answer => {
         if (answer.toLocaleLowerCase() === "y") {
             console.log("LET'S MAKE CHANGE!");
             console.log(chalk_1.default.blue("-----------------------------------"));
             parseData();
+            console.log(chalk_1.default.yellow("Thanks for playing!\n"));
         }
         else {
             console.log(chalk_1.default.red("See you next time!"));
@@ -65,7 +68,6 @@ const dialog = () => {
         rl.close();
     });
 };
-init();
 const parseData = () => {
     const csvReader = new CsvFileReader_1.CsvFileReader("sample.csv");
     csvReader.read();
@@ -78,6 +80,7 @@ const parseData = () => {
         changeParser.summary();
     });
 };
+init();
 /*
 REQUIREMENTS
 
