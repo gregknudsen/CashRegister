@@ -27,3 +27,5 @@ First off, thanks so much for the opportunity to work on this assignment. I opte
   - Either Node or .Net
 - Implement Tests
 - More modularity
+- Add ability to change the divisor
+- Add international currencies

@@ -53,9 +53,9 @@ const intro = () => {
 const dialog = () => {
     const rl = readline.createInterface({
         input: process.stdin,
-        output: process.stdout
+        output: process.stdout,
     });
-    rl.question("Assuming you have a .csv file ready, are you ready to make change? [Y, n] \n", answer => {
+    rl.question("Assuming you have a .csv file ready, are you ready to make change? [Y, n] \n", (answer) => {
         if (answer.toLocaleLowerCase() === "y") {
             console.log("LET'S MAKE CHANGE!");
             console.log(chalk_1.default.blue("-----------------------------------"));
@@ -81,16 +81,3 @@ const parseData = () => {
     });
 };
 init();
-/*
-REQUIREMENTS
-
-Accept a flat file as input
-Each line will contain the amount owed and the amount paid separated by a comma (for example: 2.13,3.00)
-Expect that there will be multiple lines
-Output the change the cashier should return to the customer
-The return string should look like: 1 dollar,2 quarters,1 nickel, etc ...
-Each new line in the input file should be a new line in the output file
-
-***If the "owed" amount is divisible by 3, the app should randomly generate the change denominations***
-
-*/ 
