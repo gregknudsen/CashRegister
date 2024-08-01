@@ -75,7 +75,6 @@ const parseData = () => {
         let amountOwed = Number(el[0]);
         let amountGiven = Number(el[1]);
         const changeParser = new ChangeParser_1.ChangeParser(amountOwed, amountGiven);
-        //  console.log(changeParser.difference);
         changeParser.provideChange();
         changeParser.summary();
     });

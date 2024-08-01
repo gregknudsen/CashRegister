@@ -58,7 +58,6 @@ const parseData = (): void => {
     let amountGiven = Number(el[1]);
 
     const changeParser = new ChangeParser(amountOwed, amountGiven);
-    //  console.log(changeParser.difference);
     changeParser.provideChange();
     changeParser.summary();
   });
